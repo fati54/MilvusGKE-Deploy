@@ -1,0 +1,36 @@
+# Fichiers d'environnement
+.env
+
+# Logs
+*.log
+
+# Fichiers système macOS
+.DS_Store
+
+# Fichiers temporaires
+*.tmp
+
+# Dossiers de dépendances
+node_modules/
+
+# Fichiers de configuration locaux
+*.local
+
+# Fichiers de sauvegarde
+*.bak
+
+# Fichiers de clés et secrets
+*.pem
+*.key
+*.crt
+
+# Dossiers de build
+build/
+dist/
+
+# Fichiers de cache
+.cache/
+
+# Autres fichiers à ignorer
+*.swp
+*.swo

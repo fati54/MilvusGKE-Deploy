@@ -1,0 +1,142 @@
+cluster:
+  enabled: true
+
+image:
+  tag: ${MILVUS_VERSION}
+
+persistence:
+  enabled: true
+  storageClass: "premium-rwo"
+
+service:
+  type: LoadBalancer
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+
+tls:
+  enabled: true
+
+proxy:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 2
+      memory: 4Gi
+    limits:
+      cpu: 4
+      memory: 8Gi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+dataNode:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 4
+      memory: 8Gi
+    limits:
+      cpu: 8
+      memory: 16Gi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+queryNode:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 4
+      memory: 8Gi
+    limits:
+      cpu: 8
+      memory: 16Gi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+indexNode:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 4
+      memory: 8Gi
+    limits:
+      cpu: 8
+      memory: 16Gi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+etcd:
+  replicaCount: 3
+  resources:
+    requests:
+      cpu: 1
+      memory: 2Gi
+    limits:
+      cpu: 2
+      memory: 4Gi
+
+pulsar:
+  enabled: true
+  components:
+    autorecovery: true
+  proxy:
+    replicaCount: 3
+    resources:
+      requests:
+        cpu: 1
+        memory: 2Gi
+      limits:
+        cpu: 2
+        memory: 4Gi
+  bookkeeper:
+    replicaCount: 3
+    resources:
+      requests:
+        cpu: 2
+        memory: 4Gi
+      limits:
+        cpu: 4
+        memory: 8Gi
+  broker:
+    replicaCount: 3
+    resources:
+      requests:
+        cpu: 2
+        memory: 4Gi
+      limits:
+        cpu: 4
+        memory: 8Gi
+  zookeeper:
+    replicaCount: 3
+    resources:
+      requests:
+        cpu: 1
+        memory: 2Gi
+      limits:
+        cpu: 2
+        memory: 4Gi
+
+minio:
+  mode: distributed
+  replicas: 4
+  resources:
+    requests:
+      cpu: 1
+      memory: 2Gi
+    limits:
+      cpu: 2
+      memory: 4Gi

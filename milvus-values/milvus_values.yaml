@@ -1,0 +1,21 @@
+cluster:
+  enabled: true
+
+persistence:
+  enabled: true
+
+service:
+  type: LoadBalancer
+
+metrics:
+  enabled: true
+
+extraConfigFiles:
+  user.yaml: |
+    cache:
+      insertBuffer:
+        enabled: true
+    dataCoord:
+      enableCompaction: true
+    common:
+      retentionDuration: 168h
